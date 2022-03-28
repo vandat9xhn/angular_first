@@ -1,0 +1,13 @@
+.home_name {
+    font-weight: 500;
+}
+
+.home_letter {
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(231, 219, 219);
+    }
+}
+.home_letter-3 {
+    color: rgb(44, 44, 214);
+}

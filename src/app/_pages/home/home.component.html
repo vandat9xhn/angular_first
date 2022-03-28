@@ -1,0 +1,32 @@
+<div>
+    <div class="home_name" (click)="handleClick()">
+        This is data in Home: {{ name }}
+    </div>
+
+    <div>
+        <app-btn-rounded [props]="btn_props"> Button rounded </app-btn-rounded>
+    </div>
+
+    <div>
+        <input
+            type="text"
+            placeholder="Type something"
+            [(ngModel)]="name"
+            (ngModelChange)="handleChangeName()"
+        />
+    </div>
+
+    <div>For: Click to delete letter</div>
+
+    <div
+        *ngFor="let letter of letters; index as i"
+        class="home_letter"
+        [ngStyle]="i === 1 ? { color: 'red' } : {}"
+        [ngClass]="i === 2 ? 'home_letter-3' : ''"
+        (click)="handleDeleteLetter(i)"
+    >
+        {{ i }}: {{ letter }}
+
+        <span *ngIf="letter === 'e'">(ngIf: letter === e)</span>
+    </div>
+</div>

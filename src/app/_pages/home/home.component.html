@@ -1,10 +1,7 @@
 <div>
+    <!-- 2 way binding -->
     <div class="home_name" (click)="handleClick()">
         This is data in Home: {{ name }}
-    </div>
-
-    <div>
-        <app-btn-rounded [props]="btn_props"> Button rounded </app-btn-rounded>
     </div>
 
     <div>
@@ -16,10 +13,16 @@
         />
     </div>
 
+    <!-- ng-content -->
+    <div>
+        <app-btn-rounded [props]="btn_props"> Button rounded </app-btn-rounded>
+    </div>
+
+    <!-- For -->
     <div>For: Click to delete letter</div>
 
     <div
-        *ngFor="let letter of letters; index as i"
+        *ngFor="let letter of letters; let i = index"
         class="home_letter"
         [ngStyle]="i === 1 ? { color: 'red' } : {}"
         [ngClass]="i === 2 ? 'home_letter-3' : ''"
@@ -27,6 +30,43 @@
     >
         {{ i }}: {{ letter }}
 
-        <span *ngIf="letter === 'e'">(ngIf: letter === e)</span>
+        <!-- ngIf then else -->
+        <!-- ng-container ng-template -->
+        <ng-container
+            *ngIf="
+                letter === 'e';
+                then letter_e;
+                else letter === 'a' ? letter_a : other_letter
+            "
+        ></ng-container>
+
+        <ng-template #letter_e>
+            <span> ('e') </span>
+        </ng-template>
+
+        <ng-template #letter_a>
+            <span> ('a') </span>
+        </ng-template>
+
+        <ng-template #other_letter>
+            <span> (not: 'e' | 'a') </span>
+        </ng-template>
+
+        <!-- Switch -->
+        <span [ngSwitch]="i">
+            <ng-container *ngSwitchDefault> (other index) </ng-container>
+
+            <ng-container *ngSwitchCase="1"> (index: 1) </ng-container>
+
+            <ng-container *ngSwitchCase="3"> (index: 3) </ng-container>
+        </span>
+    </div>
+
+    <!-- Attr directives -->
+    <div
+        class="home_directive_highlight"
+        [appHighlight]="'home_directive_highlight-hover'"
+    >
+        This is Attr directives
     </div>
 </div>

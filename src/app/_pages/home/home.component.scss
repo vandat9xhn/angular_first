@@ -11,3 +11,13 @@
 .home_letter-3 {
     color: rgb(44, 44, 214);
 }
+
+.home_directive_highlight {
+    cursor: pointer;
+    transition: all 250ms;
+}
+.home_directive_highlight-hover {
+    background-color: yellow;
+    font-style: italic;
+    font-weight: 500;
+}

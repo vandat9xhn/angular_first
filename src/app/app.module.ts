@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterPageComponent } from './_pages/register-page/register-page.component';
 import { BtnRoundedComponent } from './_components/btn-rounded/btn-rounded.component';
+import { HighlightDirective } from './_components/highlight/highlight.directive';
 
 //
 @NgModule({
@@ -23,6 +24,7 @@ import { BtnRoundedComponent } from './_components/btn-rounded/btn-rounded.compo
         HomeComponent,
         RegisterPageComponent,
         BtnRoundedComponent,
+        HighlightDirective,
     ],
     imports: [BrowserModule, AppRoutingModule, FormsModule],
     providers: [],

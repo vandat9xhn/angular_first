@@ -5,6 +5,8 @@ import {
     NavigationEnd,
     Router,
 } from '@angular/router';
+import { Observable, Subscriber } from 'rxjs';
+import { FakeAPI } from 'src/app/_api/FakeAPI';
 
 //
 @Component({
@@ -21,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         click: () => {
             console.log(1);
         },
+        className: 'home_btn_rounded',
     };
 
     letters = ['a', 'b', 'c', 'd', 'e'];
@@ -48,6 +51,9 @@ export class HomeComponent implements OnInit, OnDestroy {
         // NavigationCancel
         // NavigationError
         // RoutesRecognized
+
+        //
+        this.handleObserver();
     }
 
     ngOnDestroy(): void {
@@ -66,5 +72,24 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     handleDeleteLetter(i: number): void {
         this.letters.splice(i, 1);
+    }
+
+    // RxJs
+    handleObserver() {
+        const handleComplete = async (observer: Subscriber<any>) => {
+            await FakeAPI();
+            observer.complete();
+        };
+        const observable = new Observable((observer) => {
+            observer.next(1);
+            observer.next(2);
+
+            handleComplete(observer);
+        });
+
+        observable.subscribe({
+            next: (val) => console.log(val),
+            complete: () => console.log('Done'),
+        });
     }
 }

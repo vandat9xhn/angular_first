@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 //
 @Component({
@@ -8,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 //
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit, OnDestroy {
     constructor() {}
 
+    // ----
+
     ngOnInit(): void {}
+
+    ngOnDestroy(): void {}
 }

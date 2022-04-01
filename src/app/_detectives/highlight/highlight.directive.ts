@@ -1,7 +1,6 @@
 import {
     Directive,
     ElementRef,
-    HostListener,
     Input,
     OnInit,
 } from '@angular/core';

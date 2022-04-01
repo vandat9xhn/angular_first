@@ -1,1 +1,9 @@
-<div>This is registration page</div>
+<div>
+    <div>This is registration page</div>
+
+    <div (click)="handleToggleBool()" appToggleBool [is_true]="true">
+        Toggle bool
+    </div>
+
+    <ng-container appUseMounted></ng-container>
+</div>

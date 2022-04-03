@@ -5,6 +5,7 @@ import {
     OnInit,
     ViewChild,
 } from '@angular/core';
+import { Router } from '@angular/router';
 //
 import { useMountedInjector } from 'src/app/hooks/useMountedInjector';
 import { ToggleBoolDirective } from 'src/app/_detectives/toggle_bool/toggle-bool.directive';
@@ -17,7 +18,7 @@ import { UseMountedDirective } from 'src/app/_detectives/use_mounted/use-mounted
     providers: [useMountedInjector],
 })
 export class RegisterPageComponent implements OnInit, OnDestroy, AfterViewInit {
-    constructor(private mounted_obj: useMountedInjector) {}
+    constructor(private mounted_obj: useMountedInjector, private router: Router) {}
     @ViewChild(ToggleBoolDirective) childToggleBool!: ToggleBoolDirective;
     @ViewChild(UseMountedDirective) childUseMounted!: UseMountedDirective;
 
@@ -41,5 +42,6 @@ export class RegisterPageComponent implements OnInit, OnDestroy, AfterViewInit {
     handleToggleBool() {
         this.childToggleBool.toggleBool();
         console.log(this.childToggleBool.is_true);
+        this.router.navigate(['/login'])
     }
 }

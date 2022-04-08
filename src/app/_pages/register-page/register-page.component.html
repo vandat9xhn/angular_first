@@ -1,9 +1,23 @@
 <div>
     <div>This is registration page</div>
 
-    <div (click)="handleToggleBool()" appToggleBool [is_true]="true">
+    <div (click)="handleToggleBool()" appToggleBool [is_true]="false">
         Toggle bool
     </div>
 
     <ng-container appUseMounted></ng-container>
+
+    <app-portal
+        [show_portal]="childToggleBool ? childToggleBool.is_true : false"
+    >
+        <div class="RegisterPage_portal">
+            <div class="RegisterPage_portal_contain">This is Portal</div>
+            
+            <div>
+                <button type="button" (click)="handleToggleBool()">
+                    Close Portal
+                </button>
+            </div>
+        </div>
+    </app-portal>
 </div>
